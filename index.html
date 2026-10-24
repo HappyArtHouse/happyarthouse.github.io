@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3ead8">
+  <meta name="description" content="Happy Art House؛ خانه‌ای برای دوبله، صداپیشگی، هنر و پروژه‌های خلاقانه.">
+  <title>Happy Art House | خانه هنر</title>
+  <style>
+    :root {
+      --paper: #f3ead8;
+      --ink: #29251f;
+      --muted: #766c5d;
+      --orange: #b94e2b;
+      --green: #475c45;
+      --line: #d9cbb3;
+      --white: #fffaf0;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Tahoma, Arial, sans-serif;
+      line-height: 1.9;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .wrap {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      white-space: nowrap;
+    }
+
+    .brand span { color: var(--orange); }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      font-size: 13px;
+    }
+
+    .navlinks a:hover { color: var(--orange); }
+
+    .nav-cta, .button {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--white);
+      border-radius: 6px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .hero {
+      padding: 76px 0 66px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: bold;
+      border: 1px solid #d6a38d;
+      padding: 4px 12px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 5.5vw, 65px);
+      line-height: 1.35;
+      letter-spacing: -2px;
+      margin: 0 0 18px;
+      font-weight: 900;
+    }
+
+    h1 em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 470px;
+      font-size: 15px;
+      margin: 0 0 27px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button.primary { background: var(--orange); }
+
+    .button.secondary {
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--line);
+    }
+
+    .artboard {
+      min-height: 345px;
+      background: #e6d5b7;
+      border: 1px solid #d4c09e;
+      border-radius: 48% 48% 8px 8px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sun {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: #d9a45e;
+      border-radius: 50%;
+      top: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .orbit {
+      position: absolute;
+      width: 285px;
+      height: 285px;
+      border: 1px solid rgba(41,37,31,.35);
+      border-radius: 50%;
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .art-symbol {
+      position: relative;
+      z-index: 1;
+      font-size: 105px;
+      filter: sepia(.25);
+      transform: rotate(-8deg);
+      margin-top: 28px;
+    }
+
+    .art-caption {
+      position: absolute;
+      bottom: 18px;
+      right: 18px;
+      left: 18px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .intro-strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 17px 0;
+    }
+
+    .strip-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .strip-inner strong { color: var(--ink); }
+
+    section.content-section { padding: 76px 0; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(27px, 4vw, 40px);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 5px 0 0;
+      font-size: 13px;
+    }
+
+    .text-link {
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      overflow: hidden;
+      transition: transform .2s;
+    }
+
+    .project-card:hover { transform: translateY(-4px); }
+
+    .project-art {
+      height: 175px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 60px;
+      position: relative;
+    }
+
+    .project-art.one { background: #e8c6a5; }
+    .project-art.two { background: #bdc8ad; }
+    .project-art.three { background: #d9b6a8; }
+
+    .project-art small {
+      position: absolute;
+      right: 13px;
+      top: 10px;
+      font-size: 10px;
+      background: rgba(255,250,240,.8);
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+
+    .project-info { padding: 18px; }
+
+    .project-info h3 {
+      margin: 0 0 5px;
+      font-size: 18px;
+    }
+
+    .project-info p {
+      color: var(--muted);
+      font-size: 12px;
+      margin: 0 0 12px;
+    }
+
+    .project-type {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 13px;
+    }
+
+    .category {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 23px 16px;
+      background: rgba(255,250,240,.45);
+    }
+
+    .category .icon {
+      font-size: 29px;
+      margin-bottom: 12px;
+    }
+
+    .category h3 { font-size: 15px; margin: 0 0 5px; }
+    .category p { font-size: 11px; color: var(--muted); margin: 0; }
+
+    .about-panel {
+      background: var(--green);
+      color: #fff9eb;
+      padding: 45px;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .about-panel h2 {
+      font-size: clamp(25px, 4vw, 38px);
+      margin: 0 0 10px;
+      line-height: 1.5;
+    }
+
+    .about-panel p {
+      font-size: 13px;
+      color: #e1e6d8;
+      margin: 0;
+      max-width: 610px;
+    }
+
+    .about-panel .button {
+      color: var(--ink);
+      background: var(--paper);
+      white-space: nowrap;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 27px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner p { color: var(--muted); font-size: 11px; margin: 0; }
+
+    .footer-links { display: flex; gap: 18px; font-size: 12px; }
+
+    @media (max-width: 760px) {
+      nav { min-height: 70px; flex-wrap: wrap; padding: 14px 0; }
+      .brand { font-size: 19px; }
+      .navlinks { order: 3; width: 100%; justify-content: space-between; gap: 10px; font-size: 11px; }
+      .nav-cta { padding: 7px 10px; font-size: 11px; }
+      .hero { grid-template-columns: 1fr; padding: 45px 0; gap: 30px; }
+      .artboard { min-height: 270px; }
+      .sun { width: 175px; height: 175px; }
+      .orbit { width: 230px; height: 230px; }
+      .art-symbol { font-size: 80px; }
+      section.content-section { padding: 50px 0; }
+      .projects { grid-template-columns: 1fr; }
+      .project-art { height: 200px; }
+      .categories { grid-template-columns: repeat(2, 1fr); }
+      .about-panel { grid-template-columns: 1fr; padding: 28px 22px; }
+      .about-panel .button { justify-self: start; }
+      .section-heading { align-items: start; }
+      .section-heading p { max-width: 240px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="wrap">
+      <a class="brand" href="#home">Happy <span>Art</span> House</a>
+      <div class="navlinks">
+        <a href="#home">خانه</a>
+        <a href="#projects">پروژه‌ها</a>
+        <a href="#arts">زمینه‌های هنری</a>
+        <a href="#about">درباره ما</a>
+      </div>
+      <a class="nav-cta" href="#projects">گشت‌وگذار در آثار ↗</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <div class="wrap hero">
+      <div>
+        <span class="eyebrow">یک خانه، هزار جور خلاقیت</span>
+        <h1>اینجا هنر،<br><em>صدا پیدا می‌کند.</em></h1>
+        <p>
+          به Happy Art House خوش آمدی؛ خانه‌ای برای دوبله،
+          صداپیشگی، تصویرسازی و ایده‌هایی که با همکاری هنرمندان
+          جان می‌گیرند.
+        </p>
+        <div class="hero-buttons">
+          <a class="button primary" href="#projects">دیدن پروژه‌ها ↙</a>
+          <a class="button secondary" href="#about">داستان ما</a>
+        </div>
+      </div>
+
+      <div class="artboard" aria-label="تصویر تزئینی موقت">
+        <div class="sun"></div>
+        <div class="orbit"></div>
+        <div class="art-symbol" aria-hidden="true">✦</div>
+        <div class="art-caption">
+          <span>HAPPY ART HOUSE</span>
+          <span>EST. WITH IMAGINATION</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro-strip">
+      <div class="wrap strip-inner">
+        <strong>ساخته‌شده با عشق به هنر</strong>
+        <span>دوبله و صداپیشگی</span>
+        <span>تصویر و طراحی</span>
+        <span>موسیقی و پروژه‌های خلاقانه</span>
+      </div>
+    </div>
+
+    <section class="content-section" id="projects">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <h2>چیزهایی که ساخته‌ایم</h2>
+            <p>هر پروژه، یک ایده؛ هر همکاری، یک تجربه تازه.</p>
+          </div>
+          <a class="text-link" href="#arts">زمینه‌های فعالیت ↙</a>
+        </div>
+
+        <div class="projects">
+          <article class="project-card">
+            <div class="project-art one">
+              <small>پروژه نمونه</small>
+              <span aria-hidden="true">🎬</span>
+            </div>
+            <div class="project-info">
+              <span class="project-type">دوبله فارسی</span>
+              <h3>روایت‌هایی با صدای ما</h3>
+              <p>پروژه‌های دوبله و صداپیشگی گروه؛ این کارت بعداً با اثر واقعی جایگزین می‌شود.</p>
+              <a class="text-link" href="#about">بیشتر بدان ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-art two">
+              <small>پروژه نمونه</small>
+              <span aria-hidden="true">🎨</span>
+            </div>
+            <div class="project-info">
+              <span class="project-type">هنرهای تجسمی</span>
+              <h3>از طرح تا تصویر</h3>
+              <p>جایی برای نمایش نقاشی‌ها، طراحی‌ها و ایده‌های تصویری اعضا.</p>
+              <a class="text-link" href="#about">بیشتر بدان ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-art three">
+              <small>پروژه نمونه</small>
+              <span aria-hidden="true">🎮</span>
+            </div>
+            <div class="project-info">
+              <span class="project-type">پروژه‌های تعاملی</span>
+              <h3>ایده‌هایی برای تجربه‌کردن</h3>
+              <p>معرفی پروژه‌های ویژه، بازی‌ها و تجربه‌های خلاقانه آینده.</p>
+              <a class="text-link" href="#about">بیشتر بدان ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="arts">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <h2>هنر فقط یک مسیر نیست</h2>
+            <p>زمینه‌های مختلف، کنار هم در یک خانه.</p>
+          </div>
+        </div>
+
+        <div class="categories">
+          <article class="category">
+            <div class="icon" aria-hidden="true">🎙️</div>
+            <h3>دوبله و صداپیشگی</h3>
+            <p>صدا، شخصیت و روایت.</p>
+          </article>
+          <article class="category">
+            <div class="icon" aria-hidden="true">🖌️</div>
+            <h3>طراحی و تصویر</h3>
+            <p>از طرح‌های دستی تا هنر دیجیتال.</p>
+          </article>
+          <article class="category">
+            <div class="icon" aria-hidden="true">🎵</div>
+            <h3>موسیقی و صدا</h3>
+            <p>ریتم، صدا و حال‌وهوا.</p>
+          </article>
+          <article class="category">
+            <div class="icon" aria-hidden="true">🕹️</div>
+            <h3>بازی و تجربه</h3>
+            <p>ایده‌هایی برای تعامل و کشف.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="about">
+      <div class="wrap">
+        <div class="about-panel">
+          <div>
+            <h2>هنر وقتی قشنگ‌تره که با هم بسازیمش.</h2>
+            <p>
+              Happy Art House یک فضای هنری برای یادگیری، همکاری،
+              به‌اشتراک‌گذاشتن آثار و کمک به رشد هنرمندانه یکدیگر است.
+              این بخش بعداً می‌تواند داستان گروه و راه‌های ارتباطی را معرفی کند.
+            </p>
+          </div>
+          <a class="button" href="#home">بازگشت به بالا ↑</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <a class="brand" href="#home">Happy <span>Art</span> House</a>
+      <p>یک خانه برای صدا، تصویر و خیال.</p>
+      <div class="footer-links">
+        <a href="#projects">پروژه‌ها</a>
+        <a href="#arts">هنرها</a>
+        <a href="#about">درباره ما</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
